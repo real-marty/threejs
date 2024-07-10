@@ -13,20 +13,29 @@ const scene = new THREE.Scene();
 /**
  * Textures
  */
-const images = new Image();
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load(
+    './textures/door/color.jpg',
+    () => {
+        console.log("load");
+    },
+    () => {
+        console.log('progess');
+    },
+    () => {
+      console.log('error');  
+    }
+)
 
-images.onload = () => {
-  console.log('image loaded ');
-};
+texture.colorSpace = THREE.SRGBColorSpace;
 
 
-images.src = './textures/door/color.jpg'
 
 /**
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const material = new THREE.MeshBasicMaterial({ map: texture });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
