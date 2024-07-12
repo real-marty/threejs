@@ -14,29 +14,29 @@ const scene = new THREE.Scene();
  * Textures
  */
 const loadingManager = new THREE.LoadingManager();
-loadingManager.onStart = () =>
-{
-    console.log('loading started')
-}
-loadingManager.onLoad = () =>
-{
-    console.log('loading finished')
-}
-loadingManager.onProgress = () =>
-{
-    console.log('loading progressing')
-}
-loadingManager.onError = () =>
-{
-    console.log('loading error')
-}
+// loadingManager.onStart = () =>
+// {
+//     console.log('loading started')
+// }
+// loadingManager.onLoad = () =>
+// {
+//     console.log('loading finished')
+// }
+// loadingManager.onProgress = () =>
+// {
+//     console.log('loading progressing')
+// }
+// loadingManager.onError = () =>
+// {
+//     console.log('loading error')
+// }
 
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
 const texture = textureLoader.load(
     './textures/door/color.jpg',
     () => {
-        console.log("load");
+        // console.log("load");
     },
     () => {
         console.log('progess');
@@ -45,6 +45,12 @@ const texture = textureLoader.load(
       console.log('error');  
     }
 )
+const alphaTexture = textureLoader.load("./textures/door/alpha.jpg")
+const heighTexture = textureLoader.load("./textures/door/height.jpg")
+const metallnessTexture = textureLoader.load("./textures/door/metallness.jpg")
+const roughnessTexture = textureLoader.load("./textures/door/roughness.jpg")
+const normalTexture = textureLoader.load("./textures/door/normal.jpg")
+const amibientOcclusionTexture = textureLoader.load("./textures/door/ambientOcclusion.jpg")
 
 texture.colorSpace = THREE.SRGBColorSpace;
 
